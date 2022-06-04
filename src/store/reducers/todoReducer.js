@@ -24,7 +24,7 @@ function todoReducer(state = todoState, action) {
         case COMPLETE_TODO:
             const currentTodoItems = [...state.todoList];
             const findedIndex = currentTodoItems.findIndex(item => item.id === action.payload.id);
-            currentTodoItems[findedIndex].complete = action.payload.complete;
+            currentTodoItems[findedIndex].completed = action.payload.completed;
 
             return {
                 ...state,
