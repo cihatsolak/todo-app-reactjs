@@ -15,7 +15,7 @@ const Input = () => {
     dispatch(addTodo({
       id: new Date().getTime(),
       text,
-      complete: false
+      completed: false
     }));
     
     setText('');
