@@ -1,6 +1,7 @@
 import React from 'react'
 import './TodoList.css'
 import TodoItem from '../TodoItem/TodoItem'
+import TodoFooter from '../TodoFooter/TodoFooter'
 
 const TodoList = () => {
     return (
@@ -12,7 +13,7 @@ const TodoList = () => {
                     })
                 }
             </div>
-            <div>Footer</div>
+            <TodoFooter/>
         </div>
     )
 }
