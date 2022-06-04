@@ -4,38 +4,42 @@ import {
     DELETE_TODO,
     COMPLETE_TODO,
     SET_TODO_FILTER
-} from '../../actionTypes/todoActionTypes'
+} from '../actionTypes/todoActionTypes'
 
 function todoReducer(state = todoState, action) {
     switch (action.type) {
         case ADD_TODO:
             return {
                 ...state,
-                items: [
-                    ...state.items,
+                todoList: [
+                    ...state.todoList,
                     action.payload
                 ]
             }
         case DELETE_TODO:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.payload)
+                todoList: state.todoList.filter(item => item.id !== action.payload)
             }
         case COMPLETE_TODO:
-            const currentTodoItems = [...state.items];
+            const currentTodoItems = [...state.todoList];
             const findedIndex = currentTodoItems.findIndex(item => item.id === action.payload.id);
             currentTodoItems[findedIndex].complete = action.payload.complete;
 
             return {
                 ...state,
-                items: currentTodoItems
+                todoList: currentTodoItems
             }
         case SET_TODO_FILTER:
             return {
                 ...state,
-                items: [
+                todoList: [
                     action.payload
                 ]
             }
+        default:
+            return state;
     }
 } 
+
+export default todoReducer

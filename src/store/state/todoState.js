@@ -1,4 +1,4 @@
 export const todoState = {
-    items: [],
-    filter: 'all'
+    todoList: [],
+    todoFilter: 'all'
 }
