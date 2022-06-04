@@ -2,18 +2,21 @@ import React from 'react'
 import './TodoList.css'
 import TodoItem from '../TodoItem/TodoItem'
 import TodoFooter from '../TodoFooter/TodoFooter'
+import { useSelector } from 'react-redux'
 
 const TodoList = () => {
+    const { todoList } = useSelector(state => state.todo);
+  
     return (
         <div className='item-content-wrapper'>
             <div className='content'>
                 {
-                    new Array(20).fill('Todo').map((item, index) => {
-                        return <TodoItem key={index} text={item} />
+                    todoList?.map((todo, index) => {
+                        return <TodoItem key={index} todo={todo} />
                     })
                 }
             </div>
-            <TodoFooter/>
+            <TodoFooter />
         </div>
     )
 }
