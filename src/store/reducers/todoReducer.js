@@ -33,9 +33,7 @@ function todoReducer(state = todoState, action) {
         case SET_TODO_FILTER:
             return {
                 ...state,
-                todoList: [
-                    action.payload
-                ]
+                todoFilter :action.payload
             }
         default:
             return state;

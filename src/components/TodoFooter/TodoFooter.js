@@ -1,21 +1,30 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './TodoFooter.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { setTodoFilter } from '../../store/actions/todo/TodoAction'
 
-const TodoFooter = props => {
+const TodoFooter = () => {
+  const { todoList, todoFilter } = useSelector(state => state.todo);
+  const incompleteTodoCount = todoList.filter(todo => !todo.completed).length;
+  const dispatch = useDispatch();
+
   return (
     <div className='content-footer'>
-        <div className='left-item'>3 Kaldı</div>
-        <div className='menu-item'>
-            Tümü
-        </div>
-        <div className='menu-item'>
-            Tamamlandı
-        </div>
+      {
+        incompleteTodoCount > 0 ? <div className='left-item'>{incompleteTodoCount} Kaldı</div> : ''
+      }
+      <div className={`menu-item ${todoFilter === 'all' ? 'active' : ''}`} onClick={() => {
+        dispatch(setTodoFilter('all'))
+      }}>
+        Tümü
+      </div>
+      <div className={`menu-item ${todoFilter === 'completed' ? 'active' : ''}`} onClick={() => {
+        dispatch(setTodoFilter('completed'))
+      }}>
+        Tamamlandı
+      </div>
     </div>
   )
 }
-
-TodoFooter.propTypes = {}
 
 export default TodoFooter

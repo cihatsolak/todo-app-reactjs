@@ -13,7 +13,7 @@ const TodoList = () => {
             setList(todoList);
             return;
         }
-        setList(todoList.filter(todo => todo.complete));
+        setList(todoList.filter(todo => todo.completed));
     }, [todoList, todoFilter])
 
     return (
